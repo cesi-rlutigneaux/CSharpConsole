@@ -18,8 +18,6 @@ class Program
 
         int netSalary = CalculateSalary(salary, tax);
 
-       
-
         Console.WriteLine("Si votre salaire est de " + salary + "€ et que votre taux d'imposition " +
             "est de " + tax + "% alors votre net mensuel est de : " + netSalary + "€");
 
