@@ -1,22 +1,28 @@
 ﻿
 class Program
 {
-    static void Square(int a, int b)
+    static int CalculateSalary(int salary, int tax)
     {
-        a = a + 1;
-        b++;
-        a = a * a;
-        b *= b;
-        Console.WriteLine(a + " " + b);
+        return (salary * (1-tax/100)) / 12;
     }
+
     static void Main(string[] args)
     {
-        int num1 = 5;
-        int num2 = 10;
-        Console.WriteLine(num1 + " " + num2);
-        Square(num1, num2);
-        Console.WriteLine(num1 + " " + num2);
-        Console.WriteLine("Press Enter Key to Exit..");
+        //int salary = int.Parse(args[0]);
+        //int tax = int.Parse(args[1]);
+        Console.OutputEncoding = System.Text.Encoding.UTF8;
+        Console.WriteLine("Enter your salary before tax: ");
+        int salary = int.Parse(Console.ReadLine());
+        Console.WriteLine("Enter the value of tax: ");
+        int tax = int.Parse(Console.ReadLine());
+
+        int netSalary = CalculateSalary(salary, tax);
+
+       
+
+        Console.WriteLine("Si votre salaire est de " + salary + "€ et que votre taux d'imposition " +
+            "est de " + tax + "% alors votre net mensuel est de : " + netSalary + "€");
+
         Console.ReadLine();
     }
 }
