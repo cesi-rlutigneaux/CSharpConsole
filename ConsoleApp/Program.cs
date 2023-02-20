@@ -3,8 +3,25 @@ class Program
 {
     static double CalculateSalary(int salary, int tax)
     {
-        double t = (double)tax/100;
-        return salary*(1-t)/12;
+        double tauxPercent = (double)tax/100;
+        return salary*(1-tauxPercent)/12;
+    }
+
+    static void DisplayElement(int salary, double netSalary, int tax, string[] months)
+    {
+        Console.WriteLine("Si votre salaire est de " + salary + "€ et que votre taux d'imposition " +
+                   "est de " + tax + "% alors votre net mensuel est de : " + netSalary + "€");
+        Console.WriteLine("Voici le détail mois par mois");
+        foreach (string month in months)
+        {
+            if (month == months[07])
+                continue;
+
+            if (month == months[11])
+                netSalary +=  netSalary * 0.1;
+
+            Console.WriteLine(month + " : " + netSalary + "€");
+        }
     }
 
     static void Main(string[] args)
@@ -23,13 +40,7 @@ class Program
             {
                 double netSalary = CalculateSalary(salary, tax);
 
-                Console.WriteLine("Si votre salaire est de " + salary + "€ et que votre taux d'imposition " +
-                    "est de " + tax + "% alors votre net mensuel est de : " + netSalary + "€");
-                Console.WriteLine("Voici le détail mois par mois");
-                foreach (string month in months)
-                {
-                    Console.WriteLine(month + " : " + netSalary + "€");
-                }
+                DisplayElement(salary, netSalary, tax, months);
             }
             else
             {
