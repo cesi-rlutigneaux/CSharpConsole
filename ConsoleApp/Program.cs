@@ -1,13 +1,16 @@
 ﻿
 class Program
 {
-    static int CalculateSalary(int salary, int tax)
+    static double CalculateSalary(int salary, int tax)
     {
-        return (salary * (1-tax/100)) / 12;
+        double t = (double)tax/100;
+        return salary*(1-t)/12;
     }
 
     static void Main(string[] args)
     {
+        string[] months = new string[] { "janvier", "février", "mars", "avril", "mai", "juin", "juillet", "aout", "septembre", "octobre", "novembre", "décembre" };
+
         Console.OutputEncoding = System.Text.Encoding.UTF8;
         Console.WriteLine("Enter your salary before tax: ");
         bool salaryIsInt = int.TryParse(Console.ReadLine(), out int salary);
@@ -18,10 +21,15 @@ class Program
             bool taxIsInt = int.TryParse(Console.ReadLine(), out int tax);
             if (taxIsInt)
             {
-                int netSalary = CalculateSalary(salary, tax);
+                double netSalary = CalculateSalary(salary, tax);
 
                 Console.WriteLine("Si votre salaire est de " + salary + "€ et que votre taux d'imposition " +
                     "est de " + tax + "% alors votre net mensuel est de : " + netSalary + "€");
+                Console.WriteLine("Voici le détail mois par mois");
+                foreach (string month in months)
+                {
+                    Console.WriteLine(month + " : " + netSalary + "€");
+                }
             }
             else
             {
