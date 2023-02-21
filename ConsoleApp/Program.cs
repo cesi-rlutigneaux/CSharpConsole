@@ -39,7 +39,6 @@ class Program
             if (taxIsInt)
             {
                 double netSalary = CalculateSalary(salary, tax);
-
                 DisplayElement(salary, netSalary, tax, months);
             }
             else
